@@ -6,6 +6,7 @@
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-analyzer-src.follows = "";
     };
   };
 
@@ -36,21 +37,19 @@
             }
           )
         );
+
+      mkRustToolchain =
+        pkgs:
+        pkgs.fenix.fromToolchainFile {
+          file = ./rust-toolchain.toml;
+          sha256 = "sha256-Di+IXIUa+MEPYM7pUUjYmgR25SLFbGF3SEsK4DSoY6c=";
+        };
     in
     {
       devShells = forAllSystems supportedSystems (pkgs: {
         default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.rust-analyzer
-
-            # Rust components
-            pkgs.fenix.latest.rustc
-            pkgs.fenix.latest.cargo
-            pkgs.fenix.latest.rust-std
-            pkgs.fenix.latest.clippy
-            pkgs.fenix.latest.rust-src
-            pkgs.fenix.latest.rust-docs
-            pkgs.fenix.latest.rustfmt
+          nativeBuildInputs = [
+            (mkRustToolchain pkgs)
 
             # Web server for development
             pkgs.miniserve
