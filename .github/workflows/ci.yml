@@ -80,19 +80,8 @@ jobs:
       - name: Build
         run: cargo build --release
 
-      - name: Generate HTML
+      - name: Generate HTML and publish directory
         run: cargo run --release
-
-      - name: Prepare publish directory
-        run: |
-          set -euo pipefail
-          rm -rf public
-          mkdir -p public public/assets
-          cp index.html public/
-          cp -r en public/en
-          cp -r fr public/fr
-          cp -r assets/fonts public/assets/fonts
-          cp -r assets/images public/assets/images
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

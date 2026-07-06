@@ -6,11 +6,18 @@ mod profile;
 mod resume;
 
 use std::fs::{
+    self,
     File,
     read_to_string,
 };
-use std::io::Write;
-use std::path::PathBuf;
+use std::io::{
+    Result,
+    Write,
+};
+use std::path::{
+    Path,
+    PathBuf,
+};
 
 use minify_html::{
     Cfg,
@@ -115,14 +122,42 @@ struct Project {
     skills: Vec<String>,
 }
 
+fn copy_dir_all<S, D>(
+    src: S,
+    dst: D,
+) -> Result<()>
+where
+    S: AsRef<Path>,
+    D: AsRef<Path>,
+{
+    fs::create_dir_all(&dst)?;
+    for entry in fs::read_dir(src)? {
+        let entry = entry?;
+        let entry_type = entry.file_type()?;
+        let src_entry_path = entry.path();
+        let dst_entry_path = dst.as_ref().join(entry.file_name());
+        if entry_type.is_dir() {
+            copy_dir_all(src_entry_path, dst_entry_path)?;
+        } else {
+            fs::copy(src_entry_path, dst_entry_path)?;
+        }
+    }
+    Ok(())
+}
+
 fn main() {
     let default_lang = "en";
+    let assets_directory = PathBuf::from("assets");
+    let output_directory = PathBuf::from("public");
     let resume_directory = PathBuf::from("resume");
 
     let resume_files = resume_directory
         .read_dir()
         .expect("failed to read resume directory")
         .map(|dir_entry| dir_entry.expect("failed to read resume file").path());
+
+    copy_dir_all(&assets_directory, output_directory.join(&assets_directory))
+        .expect("failed to copy assets to the output directory");
 
     for path in resume_files {
         let lang = path
@@ -167,15 +202,17 @@ fn main() {
 
         let minified = minify(html.as_bytes(), &cfg);
 
-        std::fs::create_dir_all(lang).expect("failed to create language directory");
+        std::fs::create_dir_all(output_directory.join(lang))
+            .expect("failed to create language directory");
 
-        let mut file = File::create(format!("{}/index.html", lang))
-            .expect("failed to create {lang}/index.html");
+        let file_path = output_directory.join(lang).join("index.html");
+
+        let mut file = File::create(&file_path).expect("failed to create {lang}/index.html");
         file.write_all(&minified)
             .expect("failed to write to {lang}/index.html");
 
         if lang == default_lang {
-            std::fs::copy(format!("{}/index.html", lang), "index.html")
+            std::fs::copy(&file_path, output_directory.join("index.html"))
                 .expect("failed to copy {lang}/index.html to index.html");
         }
     }
