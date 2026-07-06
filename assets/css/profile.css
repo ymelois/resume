@@ -1,0 +1,88 @@
+.profile {
+    background-color: #dddddd;
+}
+
+.profile > img {
+    width: 9rem;
+    height: 9rem;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border-style: solid;
+    border-width: 0.5rem;
+    border-color: color-mix(in srgb, #dddddd, transparent 25%);
+
+    outline-style: solid;
+    outline-width: 0.175rem;
+    outline-color: var(--primary-color);
+
+    background-color: white;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile > h1 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+
+    text-align: center;
+}
+
+.profile > p {
+    margin: 0;
+    opacity: 0.75;
+}
+
+.profile > section.language ul,
+.profile > section.soft-skill ul,
+.profile > section.hard-skill ul,
+.profile > section.interest ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.profile > section.language li,
+.profile > section.soft-skill li,
+.profile > section.hard-skill li,
+.profile > section.interest li {
+    font-weight: 600;
+}
+
+.profile > section.language li > span,
+.profile > section.soft-skill li > span,
+.profile > section.hard-skill li > span,
+.profile > section.interest li > span {
+    font-weight: normal;
+    opacity: 0.75;
+
+    margin-top: 0.25rem;
+
+    display: block;
+    clear: both;
+}
+
+.profile > section.contact {
+    font-size: 0.75rem;
+}
+
+.profile > section.contact ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.profile > section.contact li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.profile > section.contact svg {
+    width: 1rem;
+    height: 1rem;
+}

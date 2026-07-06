@@ -1,0 +1,64 @@
+.resume > h1 {
+    margin-bottom: 0.5rem;
+}
+
+.resume > h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-style: italic;
+    opacity: 0.75;
+}
+
+.resume > section.experience ul,
+.resume > section.education ul,
+.resume > section.project ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resume > section.experience li,
+.resume > section.education li,
+.resume > section.project li {
+    font-weight: bold;
+    position: relative;
+}
+
+.resume > section.experience .date,
+.resume > section.education .date,
+.resume > section.project .date {
+    font-weight: normal;
+    opacity: 0.65;
+    position: absolute;
+    right: 0;
+}
+
+.resume > section.experience p,
+.resume > section.education p,
+.resume > section.project p {
+    font-weight: normal;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.resume > section.experience div:has(svg),
+.resume > section.education div:has(svg),
+.resume > section.project div:has(svg) {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.resume > section.experience svg,
+.resume > section.education svg,
+.resume > section.project svg {
+    opacity: 0.5;
+    width: 1rem;
+    height: 1rem;
+}
+
+.resume > section.experience div > a,
+.resume > section.education div > a,
+.resume > section.project div > a {
+    text-decoration: underline;
+}
