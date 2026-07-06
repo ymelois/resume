@@ -19,7 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: dtolnay/rust-toolchain@nightly
+      - name: Setup Nix Flake Environement
+        uses: DeterminateSystems/determinate-nix-action@v3.17.2
 
       - uses: Swatinem/rust-cache@v2
 
@@ -32,9 +33,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: clippy
+      - name: Setup Nix Flake Environement
+        uses: DeterminateSystems/determinate-nix-action@v3.17.2
 
       - uses: Swatinem/rust-cache@v2
 
@@ -47,9 +47,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: rustfmt
+      - name: Setup Nix Flake Environement
+        uses: DeterminateSystems/determinate-nix-action@v3.17.2
 
       - uses: Swatinem/rust-cache@v2
 
@@ -71,9 +70,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: dtolnay/rust-toolchain@nightly
-        with:
-          toolchain: nightly
+      - name: Setup Nix Flake Environement
+        uses: DeterminateSystems/determinate-nix-action@v3.17.2
 
       - uses: Swatinem/rust-cache@v2
 
