@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>CV Youn Mélois</title>
+        <style>
+            @font-face {
+                font-family: "CV Cantarell";
+                src:
+                    local("Cantarell Regular"),
+                    local("Cantarell-Regular"),
+                    url("/fonts/Cantarell-VF.otf") format("opentype");
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "CV Cantarell";
+                src:
+                    local("Cantarell Bold"),
+                    local("Cantarell-Bold"),
+                    url("/fonts/Cantarell-VF.otf") format("opentype");
+                font-weight: 700;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            :root {
+                --primary-color: #111111;
+                --secondary-color: #222222;
+                --ternary-color: #333333;
+
+                --blueprint-color: #faf4f2;
+                --blueprint-line-color: rgba(221, 221, 221, 0.4);
+                --blueprint-line-width: 1px;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --blueprint-color: rgb(27, 27, 27);
+                    --blueprint-line-color: rgba(255, 255, 255, 0.05);
+                }
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            html {
+                font-family: "CV Cantarell", sans-serif;
+
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+
+                background-color: var(--blueprint-color);
+                color: var(--primary-color);
+
+                --grad: conic-gradient(at var(--blueprint-line-width) calc(100% - var(--blueprint-line-width)), transparent 90deg, var(--blueprint-line-color) 0%);
+
+                background-image: var(--grad), var(--grad);
+                background-size:
+                    30px 30px,
+                    10px 10px;
+            }
+
+            body {
+                margin: 0;
+                font-size: 13px;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            ul {
+                margin: 0;
+                padding-left: 18px;
+            }
+
+            h1 {
+                margin: 0 0 12px;
+                font-size: 26px;
+            }
+
+            main {
+                box-sizing: border-box;
+
+                width: 210mm;
+                height: 297mm;
+
+                margin: 2rem auto;
+                padding: 3rem;
+
+                background: #ffffff;
+                box-shadow: 0 2px 1em rgb(0 0 0 / 20%);
+            }
+
+            @media print {
+                main {
+                    margin: 0;
+                    box-shadow: none;
+                }
+            }
+
+            .subtitle {
+                margin: 0 0 6px;
+                color: var(--ternary-color);
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .contact,
+            .entry-meta,
+            .date-range,
+            .row a {
+                color: var(--ternary-color);
+                font-size: 12px;
+            }
+
+            .contact {
+                display: flex;
+                font-style: normal;
+            }
+
+            .separated > * + *::before {
+                content: "-";
+                margin-inline: 0.3em;
+                font-style: normal;
+            }
+
+            h2 {
+                margin: 18px 0 6px;
+                padding-bottom: 3px;
+                border-bottom: 1px solid var(--primary-color);
+                font-size: inherit;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .row {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .entry h3 {
+                margin: 0;
+                font-size: inherit;
+            }
+
+            .entry-meta {
+                font-style: italic;
+            }
+
+            .date-range {
+                display: inline-flex;
+                align-items: baseline;
+            }
+
+            #summary p {
+                margin: 0;
+                color: var(--secondary-color);
+            }
+
+            #summary p,
+            #experience li,
+            #skills > div,
+            #projects li {
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <header>
+                <h1>Youn Mélois</h1>
+                <p class="subtitle">Rust Software Engineer</p>
+                <address class="contact separated">
+                    <span>Nantes, France</span>
+                    <a href="mailto:youn@melois.dev">youn@melois.dev</a>
+                    <a href="https://melois.dev">melois.dev</a>
+                    <a href="https://www.linkedin.com/in/youn-melois">in/youn-melois</a>
+                    <a href="https://github.com/ymelois">github.com/ymelois</a>
+                </address>
+            </header>
+            <section id="summary">
+                <h2>Professional Summary</h2>
+                <p>Software engineer specializing in Rust, with experience building CLI tools, FFI bindings and WebAssembly. Shipped production features at Clever Cloud involving APIs, PostgreSQL, and CI/CD. Contributed to open-source projects.</p>
+            </section>
+            <section id="experience">
+                <h2>Work Experience</h2>
+                <article class="entry">
+                    <div class="row">
+                        <h3>Software Engineer</h3>
+                        <span class="date-range separated">
+                            <time datetime="2024-07">Jul 2024</time>
+                            <span>Present</span>
+                        </span>
+                    </div>
+                    <div class="row entry-meta">
+                        <span>Clever Cloud</span>
+                        <span>Nantes, France</span>
+                    </div>
+                    <ul>
+                        <li>Delivered a PostgreSQL user-management (roles) feature end to end: developed the API and integrated it into the clever-tools CLI.</li>
+                        <li>Performed a state-of-the-art review, produced specifications, and built a proof of concept to validate the solution.</li>
+                        <li>Optimized and integrated the CI/CD pipeline, and contributed to the KMS (Key Management System) project.</li>
+                        <li>Stack: Scala, PostgreSQL, Ruby, Rust, CI/CD, CLI.</li>
+                    </ul>
+                </article>
+            </section>
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <div><strong>Languages:</strong> Rust, C/C++, Scala, Ruby, SQL</div>
+                <div><strong>Systems & Rust:</strong> CLI, FFI, WebAssembly, Bindgen, Qt (GUI)</div>
+                <div><strong>Databases:</strong> PostgreSQL, SQLite</div>
+                <div><strong>Platforms & Tooling:</strong> Linux, NixOS, Nushell, CI/CD, Git</div>
+                <div><strong>Languages (spoken):</strong> French (Native), English (C1 - Professional)</div>
+            </section>
+            <section id="projects">
+                <h2>Projects</h2>
+                <article class="entry">
+                    <div class="row">
+                        <h3>oodle-rs <span aria-hidden="true">-</span> Compression Algorithm Rewrite in Rust</h3>
+                        <a href="https://github.com/ymelois/oodle-rs">github.com/ymelois/oodle-rs</a>
+                    </div>
+                    <ul>
+                        <li>Reimplemented parts of Oodle, a data-compression algorithm used in many video games, so it runs in Rust applications without linking against the original C library.</li>
+                        <li><strong>Stack:</strong> Rust, FFI, Bindgen.</li>
+                    </ul>
+                </article>
+                <article class="entry">
+                    <div class="row">
+                        <h3>wfcache-api <span aria-hidden="true">-</span> Reverse Engineering Warframe's Cache</h3>
+                        <a href="https://github.com/ymelois/wfcache-api">github.com/ymelois/wfcache-api</a>
+                    </div>
+                    <ul>
+                        <li>Extracted the game's binary compressed data to retrieve most images and music, and built a TUI application to explore and extract it.</li>
+                        <li><strong>Stack:</strong> Rust, C++, TUI, ImHex.</li>
+                    </ul>
+                </article>
+                <article class="entry">
+                    <div class="row">
+                        <h3>Open-Source Contributions</h3>
+                        <a href="https://github.com/ymelois">github.com/ymelois</a>
+                    </div>
+                    <ul>
+                        <li>Contributed on projects including dioxus, rust-bindgen, topgrade, and cargo-component.</li>
+                    </ul>
+                </article>
+            </section>
+            <section id="qualifications">
+                <h2>Qualification</h2>
+                <article class="entry">
+                    <div class="row">
+                        <h3>Engineering Degree, Software Engineering</h3>
+                        <span class="date-range separated">
+                            <time datetime="2020-09">Sep 2020</time>
+                            <time datetime="2025-09">Sep 2025</time>
+                        </span>
+                    </div>
+                    <div class="row entry-meta">
+                        <span>ISEN Yncréa Ouest</span>
+                        <span>Nantes, France</span>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>
