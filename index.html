@@ -166,10 +166,22 @@
                 color: var(--secondary-color);
             }
 
+            .entry {
+                margin: 8px 0;
+            }
+
+            .entry p {
+                margin: 0;
+                line-height: 1.5;
+                padding-left: 1em;
+            }
+
+            .entry .stack {
+                color: var(--ternary-color);
+            }
+
             #summary p,
-            #experience li,
-            #skills > div,
-            #projects li {
+            #skills > div {
                 line-height: 1.5;
             }
         </style>
@@ -189,7 +201,7 @@
             </header>
             <section id="summary">
                 <h2>Professional Summary</h2>
-                <p>Software engineer specializing in Rust, with experience building CLI tools, FFI bindings and WebAssembly. Shipped production features at Clever Cloud involving APIs, PostgreSQL, and CI/CD. Contributed to open-source projects.</p>
+                <p>Software engineer specializing in Rust, building reproducible systems applications with Nix. Experienced with languages interoperability, WebAssembly, Virtualisation and Reverse-Engineering.</p>
             </section>
             <section id="experience">
                 <h2>Work Experience</h2>
@@ -197,7 +209,7 @@
                     <div class="row">
                         <h3>Software Engineer</h3>
                         <span class="date-range separated">
-                            <time datetime="2024-07">Jul 2024</time>
+                            <time datetime="2025-10">Oct 2025</time>
                             <span>Present</span>
                         </span>
                     </div>
@@ -205,12 +217,23 @@
                         <span>Clever Cloud</span>
                         <span>Nantes, France</span>
                     </div>
-                    <ul>
-                        <li>Delivered a PostgreSQL user-management (roles) feature end to end: developed the API and integrated it into the clever-tools CLI.</li>
-                        <li>Performed a state-of-the-art review, produced specifications, and built a proof of concept to validate the solution.</li>
-                        <li>Optimized and integrated the CI/CD pipeline, and contributed to the KMS (Key Management System) project.</li>
-                        <li>Stack: Scala, PostgreSQL, Ruby, Rust, CI/CD, CLI.</li>
-                    </ul>
+                    <p>Migrated legacy software, created local testing environements to reproduce production services in VM and containers using Nix testing framework. Made an in-VM agent to install and setup ElasticSearch clusters as a new managed product. Patched Ceph, a distributed block storage system, to add images object and bytes quota to namespaces.</p>
+                    <p class="stack">Rust, Scala, ElasticSearch, Ceph, C/C++, Nix.</p>
+                </article>
+                <article class="entry">
+                    <div class="row">
+                        <h3>Software Developer (Internship then Apprenticeship)</h3>
+                        <span class="date-range separated">
+                            <time datetime="2024-07">Jul 2024</time>
+                            <time datetime="2025-09">Sep 2025</time>
+                        </span>
+                    </div>
+                    <div class="row entry-meta">
+                        <span>Clever Cloud</span>
+                        <span>Nantes, France</span>
+                    </div>
+                    <p>Created PostgreSQL user management API of permissions over databases tables and schemas. Optimized Gitlab CI cache, job parallelization and pipeline runtimes on main projects. Made security hardening contributions on the KMS (Key Management System).</p>
+                    <p class="stack">Scala, PostgreSQL, Rust, Ruby.</p>
                 </article>
             </section>
             <section id="skills">
@@ -225,32 +248,26 @@
                 <h2>Projects</h2>
                 <article class="entry">
                     <div class="row">
-                        <h3>oodle-rs <span aria-hidden="true">-</span> Compression Algorithm Rewrite in Rust</h3>
-                        <a href="https://github.com/ymelois/oodle-rs">github.com/ymelois/oodle-rs</a>
+                        <h3>flint <span aria-hidden="true">-</span> Minecraft Proxy</h3>
+                        <a href="https://github.com/ymelois/flint">github.com/ymelois/flint</a>
                     </div>
-                    <ul>
-                        <li>Reimplemented parts of Oodle, a data-compression algorithm used in many video games, so it runs in Rust applications without linking against the original C library.</li>
-                        <li><strong>Stack:</strong> Rust, FFI, Bindgen.</li>
-                    </ul>
+                    <p>Implemented a Proxy for Minecraft servers by decompiling official java artifacts to figure out the TCP protocol.</p>
+                    <p class="stack">Rust, Java.</p>
                 </article>
                 <article class="entry">
                     <div class="row">
-                        <h3>wfcache-api <span aria-hidden="true">-</span> Reverse Engineering Warframe's Cache</h3>
-                        <a href="https://github.com/ymelois/wfcache-api">github.com/ymelois/wfcache-api</a>
+                        <h3>oodle-rs <span aria-hidden="true">-</span> Compression Algorithm Rewrite in Rust</h3>
+                        <a href="https://github.com/ymelois/oodle-rs">github.com/ymelois/oodle-rs</a>
                     </div>
-                    <ul>
-                        <li>Extracted the game's binary compressed data to retrieve most images and music, and built a TUI application to explore and extract it.</li>
-                        <li><strong>Stack:</strong> Rust, C++, TUI, ImHex.</li>
-                    </ul>
+                    <p>Reimplemented parts of Oodle, a data-compression algorithm used in many video games, so it runs in Rust applications without linking against the original C library.</p>
+                    <p class="stack">Rust, FFI, Bindgen.</p>
                 </article>
                 <article class="entry">
                     <div class="row">
                         <h3>Open-Source Contributions</h3>
                         <a href="https://github.com/ymelois">github.com/ymelois</a>
                     </div>
-                    <ul>
-                        <li>Contributed on projects including dioxus, rust-bindgen, topgrade, and cargo-component.</li>
-                    </ul>
+                    <p>Contributed on projects including dioxus, rust-bindgen, topgrade, and cargo-component.</p>
                 </article>
             </section>
             <section id="qualifications">
