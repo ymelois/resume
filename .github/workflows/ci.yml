@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  minify-and-publish:
+    name: Minify & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download minhtml
+        env:
+          GH_TOKEN: ${{github.token}}
+          MINHTML_VERSION: "0.18.1"
+          MINHTML_SHA256: "8c7634c1c2d1ae343988320e928ee895ffa11f433ab3913000d8b6ea69d4bae3"
+        run: |
+          gh release download "v${MINHTML_VERSION}" \
+            --repo wilsonzlin/minify-html \
+            --pattern "minhtml-${MINHTML_VERSION}-x86_64-unknown-linux-gnu" \
+            --output "${RUNNER_TEMP}/minhtml"
+
+          echo "${MINHTML_SHA256}  ${RUNNER_TEMP}/minhtml" | sha256sum --check
+
+          chmod +x "${RUNNER_TEMP}/minhtml"
+          echo "${RUNNER_TEMP}" >> "${GITHUB_PATH}"
+
+      - name: Prepare publishing directory
+        run: |
+          mkdir _site
+          cp index.html _site/
+          cp -a fonts _site/
+
+      - name: Minify HTML
+        run: minhtml --minify-css _site/index.html --output _site/index.html
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./_site
+          cname: cv.melois.dev
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "chore: publish resume"
