@@ -193,21 +193,23 @@
         <main>
             <header>
                 <h1>Youn Mélois</h1>
-                <p class="subtitle">Rust Software Engineer</p>
+                <p class="subtitle">Systems Reliability Engineer</p>
                 <address class="contact separated">
                     <span>Nantes, France</span>
                     <a href="mailto:youn@melois.dev">youn@melois.dev</a>
                     <a href="https://melois.dev">melois.dev</a>
                     <a href="https://www.linkedin.com/in/youn-melois">in/youn-melois</a>
                     <a href="https://github.com/ymelois">github.com/ymelois</a>
+                    <span>French (Native)</span>
+                    <span>English (C1)</span>
                 </address>
             </header>
             <section id="summary">
                 <h2>Professional Summary</h2>
-                <p>Software engineer specializing in Rust, building reproducible systems applications with Nix. Experienced with languages interoperability, WebAssembly, Virtualisation and Reverse-Engineering.</p>
+                <p>Software engineer experienced in building and maintaining production cloud infrastructure and managed database services. Focused on understanding complex systems, improving reliability, investigating performance bottlenecks, and reducing operational complexity. Interested in distributed systems, storage, databases, and low-level software engineering.</p>
             </section>
             <section id="experience">
-                <h2>Work Experience</h2>
+                <h2>Professional Experience</h2>
                 <article class="entry">
                     <div class="row">
                         <h3>Software Engineer</h3>
@@ -220,8 +222,13 @@
                         <span>Clever Cloud</span>
                         <span>Nantes, France</span>
                     </div>
-                    <p>Migrated legacy software providing unified development stack from Scala to Rust and fixed old bugs, deployed and stabilized products for all clients. At the same time, created local testing environements to reproduce production services in VM and containers using Nix reproductible testing framework. Made an in-VM agent to install and setup ElasticSearch clusters to improve the present managed product. Patched Ceph, a distributed block storage system, to add images object and bytes quota to namespaces.</p>
-                    <p class="stack">Rust, Scala, ElasticSearch, Ceph, C/C++, Nix, Linux.</p>
+                    <ul>
+                        <li>Designed a reproducible NixOS end-to-end test harness covering cloud control-plane and data-plane services, including VM provisioning through nested virtualization.</li>
+                        <li>Detected binary protocol incompatibilities and deployment sequencing regressions during Scala-to-Rust migration; shared the approach with other engineers, informing improvements to existing Docker-based testing tools.</li>
+                        <li>Developed a Ceph RBD patch introducing per-namespace image count and storage usage quotas for multi-tenant Kubernetes workloads.</li>
+                        <li>Built an in-VM Elasticsearch provisioning agent with GPG-verified downloads, node configuration, service startup, and WireGuard connectivity setup.</li>
+                    </ul>
+                    <p class="stack">Rust, Scala, NixOS, Linux, Ceph, ElasticSearch, Virtualization.</p>
                 </article>
                 <article class="entry">
                     <div class="row">
@@ -235,35 +242,31 @@
                         <span>Clever Cloud</span>
                         <span>Nantes, France</span>
                     </div>
-                    <p>Created PostgreSQL user management API of permissions over databases tables and schemas. Optimized Gitlab CI cache, job parallelization and pipeline runtimes on main projects. Made security hardening contributions on the KMS (Key Management System).</p>
-                    <p class="stack">Scala, PostgreSQL, Rust, Ruby, Linux.</p>
+                    <ul>
+                        <li>Optimized GitLab CI pipelines for a Scala control-plane project, reducing execution time from ~40min down to 10-15min, and under 5min in some cases.</li>
+                        <li>Developed PostgreSQL access-management APIs covering databases, schemas and tables-level privileges.</li>
+                        <li>Contributed to hardening the internal Key Management System.</li>
+                    </ul>
+                    <p class="stack">Scala, PostgreSQL, Rust, Python, Ruby, GitLab CI.</p>
                 </article>
-            </section>
-            <section id="skills">
-                <h2>Technical Skills</h2>
-                <div><strong>Languages:</strong> Rust, C/C++, Nix</div>
-                <div><strong>Systems & Rust:</strong> WebAssembly, Virtualisation</div>
-                <div><strong>Databases:</strong> PostgreSQL, SQLite</div>
-                <div><strong>Platforms & Tooling:</strong> Linux, NixOS, CI/CD, Git</div>
-                <div><strong>Languages (spoken):</strong> French (Native), English (C1 - Professional)</div>
             </section>
             <section id="projects">
-                <h2>Projects</h2>
+                <h2>Selected Projects</h2>
                 <article class="entry">
                     <div class="row">
-                        <h3>flint <span aria-hidden="true">-</span> Minecraft Proxy</h3>
-                        <a href="https://github.com/ymelois/flint">github.com/ymelois/flint</a>
+                        <h3>1 Billion Row Challenge <span aria-hidden="true">-</span> High Performance Data Processing</h3>
+                        <a href="https://github.com/ymelois/1brc">github.com/ymelois/1brc</a>
                     </div>
-                    <p>Implemented a Proxy for Minecraft servers by decompiling official java artifacts to figure out the TCP protocol.</p>
-                    <p class="stack">Rust, Java.</p>
+                    <p>Implemented and optimized a solution for parsing one billion measurement records, exploring efficient parsing, memory access, and execution performance through benchmarking.</p>
+                    <p class="stack">Rust, Performance Engineering, Benchmarking.</p>
                 </article>
                 <article class="entry">
                     <div class="row">
-                        <h3>oodle-rs <span aria-hidden="true">-</span> Compression Algorithm Rewrite in Rust</h3>
-                        <a href="https://github.com/ymelois/oodle-rs">github.com/ymelois/oodle-rs</a>
+                        <h3>wfcache-api <span aria-hidden="true">-</span> Binary Format Reverse Engineering</h3>
+                        <a href="https://github.com/ymelois/wfcache-api">github.com/ymelois/wfcache-api</a>
                     </div>
-                    <p>Reimplemented parts of Oodle, a data-compression algorithm used in many video games, so it runs in Rust applications without linking against the original C library.</p>
-                    <p class="stack">Rust, FFI, Bindgen.</p>
+                    <p>Reverse-engineered Warframe's game cache format and developed a library to list, parse and extract stored assets, focusing on efficient binary data processing.</p>
+                    <p class="stack">Rust, Reverse Engineering, Binary Parsing.</p>
                 </article>
                 <article class="entry">
                     <div class="row">
@@ -273,8 +276,15 @@
                     <p>Contributed to projects including tangled, tauri, dioxus, rust-bindgen, topgrade, and cargo-component.</p>
                 </article>
             </section>
-            <section id="qualifications">
-                <h2>Qualifications</h2>
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <div><strong>Programming:</strong> Rust, Scala, C/C++, Nix</div>
+                <div><strong>Systems & Infrastructure:</strong> Linux, virtualization, containers, NixOS, CI/CD, Git</div>
+                <div><strong>Databases & Storage:</strong> PostgreSQL, SQLite, Ceph, ElasticSearch</div>
+                <div><strong>Technical Focus:</strong> Reliability Engineering, Performance Optimization, Binary Parsing, Reverse Engineering</div>
+            </section>
+            <section id="education">
+                <h2>Education</h2>
                 <article class="entry">
                     <div class="row">
                         <h3>Diplôme d'Ingénieur in Software Engineering (Master's-level degree)</h3>
